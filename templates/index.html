@@ -4,5 +4,32 @@
 
 
 {% block content %}
-    hello world
+<div class="wrapper">
+    <div class="left-col">
+        <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo">
+
+        <div class="content">
+            <h1>Tweet on the internet</h1>
+            <p>Let your voice reach to the world without fear using our platform.</p>
+            <a href="{% url 'account_login' %}"><button type="button" class="signin">Sign in</button></a>
+            <a href="{% url 'account_signup' %}"><button type="button" class="register">Register Now</button></a>
+        </div>
+    </div>
+    <div class="right-col">
+        <div class="slider">
+            <img src="{% static 'images/pic-1.jpg' %}" alt="" id="slider">
+        </div>
+        <div class="slider-content">
+            <h2>Where can I find ideas for small rooms?</h2>
+            <hr>
+            <p>Random text.</p>
+
+            <!-- <div class="controller">
+                <img src="{% static 'images/back.png' %}" alt="" id="BackBtn">
+                <div class="vertical-line"></div>
+                <img src="{% static 'images/next.png' %}" alt="" id="NextBtn">
+            </div> -->
+        </div>
+    </div>
+</div>
 {% endblock %}
