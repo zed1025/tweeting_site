@@ -5,14 +5,10 @@
 {% block content %}
 
 <div class="custom-centered mt-5">
-<h2>Account</h2>
+<h2>{{ user.username }}'s Profile</h2>
 <form method="post">{% csrf_token %}
-	{% for field in account_form %}
-		<p>
-			{{field.label_tag}}
-			{{field}}
-		</p>
-	{% endfor %}
+
+	{{account_form|crispy}}
 
 	{% for field in account_form %}
 		{% for error in field.errors %}
@@ -25,7 +21,7 @@
 			<p>{{account_form.non_field_errors}}</p>
 		</div>
 	{% endif %}
-	<button type="submit" class="btn btn-success">Save changes</button>
+	<button type="submit" class="btn btn-success btn-block mt-3">Save changes</button>
 
 </form>
 <div class="mt-3">
