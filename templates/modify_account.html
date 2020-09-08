@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="custom-centered mt-5">
+<h2>Account</h2>
+<form method="post">{% csrf_token %}
+	{% for field in account_form %}
+		<p>
+			{{field.label_tag}}
+			{{field}}
+		</p>
+	{% endfor %}
+
+	{% for field in account_form %}
+		{% for error in field.errors %}
+			<p style="color: red;">{{error}}</p>
+		{% endfor %}
+	{% endfor %}
+
+	{% if account_form.non_field_errors %}
+		<div style="color:red;">
+			<p>{{account_form.non_field_errors}}</p>
+		</div>
+	{% endif %}
+	<button type="submit" class="btn btn-success">Save changes</button>
+
+</form>
+<div class="mt-3">
+	<a href="{% url 'account_email' %}">Change Email?</a>
+	<a href="{% url 'account_change_password' %}">Change Password?</a>
+</div>
+</div>
+
+{% endblock content %}
