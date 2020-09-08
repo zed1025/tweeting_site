@@ -1,7 +1,8 @@
+
 from django.shortcuts import render
 from django.shortcuts import redirect
 
-from account.forms import AccountUpdateForm
+from user.forms import AccountUpdateForm
 
 
 def account_update_view(request):
@@ -25,3 +26,4 @@ def account_update_view(request):
         )
     context['account_form'] = form
     return render(request, 'modify_account.html', context)
+

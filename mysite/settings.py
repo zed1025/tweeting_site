@@ -37,6 +37,8 @@ INSTALLED_APPS = [
 
     # user
     'pages',
+    'user',
+    'feed',
 ]
 
 MIDDLEWARE = [

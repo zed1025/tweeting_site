@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.urls import path, include
 
-from account.views import account_update_view
+from user.views import account_update_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
