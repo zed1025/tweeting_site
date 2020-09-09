@@ -16,22 +16,22 @@
     {% endif %}
     {% block body %}
 
-    {% if messages %}
-    <div class="container">
-      <ul class="list-unstyled">
-        {% for message in messages %}
-        <li>
-          <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            {{ message }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endif %}
+<!--    {% if messages %}-->
+<!--    <div class="container">-->
+<!--      <ul class="list-unstyled">-->
+<!--        {% for message in messages %}-->
+<!--        <li>-->
+<!--          <div class="alert alert-warning alert-dismissible fade show" role="alert">-->
+<!--            {{ message }}-->
+<!--            <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--              <span aria-hidden="true">&times;</span>-->
+<!--            </button>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--        {% endfor %}-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--    {% endif %}-->
 
 
     {% block content %}

@@ -130,6 +130,7 @@ STATICFILES_DIRS = [
 LOGIN_REDIRECT_URL = 'feed'
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_URL = 'account_login'
+AUTH_USER_MODEL = 'user.CustomUser'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

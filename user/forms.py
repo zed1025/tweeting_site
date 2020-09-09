@@ -3,6 +3,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model
 
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from user.models import CustomUser
+
 from crispy_forms.helper import FormHelper
 
 Account = get_user_model()
@@ -31,3 +34,15 @@ class AccountUpdateForm(forms.ModelForm):
         except Account.DoesNotExist:
             return username
         raise forms.ValidationError('Username "%s" is already in use.' % username)
+
+
+class CustomUserCreationForm(UserCreationForm):
+    class Meta:
+        model = CustomUser
+        fields = ('username', 'email')
+
+
+class CustomUserChangeForm(UserChangeForm):
+    class Meta:
+        model = CustomUser
+        fields = ('username', 'email')
