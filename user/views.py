@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 
 from user.forms import AccountUpdateForm
+from feed.models import Tweet
 
 
 def account_update_view(request):
@@ -24,6 +25,8 @@ def account_update_view(request):
                 'last_name': request.user.last_name,
             }
         )
+
     context['account_form'] = form
+
     return render(request, 'modify_account.html', context)
 
