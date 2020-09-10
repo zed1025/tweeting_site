@@ -1,6 +1,6 @@
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
-from feed.forms import CreateTweetForm, EditTweetForm
+from feed.forms import CreateTweetForm, EditTweetForm, CreateCommentForm
 from feed.models import Tweet
 from django.contrib.auth import get_user_model
 from operator import attrgetter
@@ -127,3 +127,24 @@ def like_view(request, slug):
 #     tweet = get_object_or_404(Tweet, id=request.POST.get('post_id'))
 #     tweet.likes.remove(request.user)
 #     return redirect('tweet_detail', slug=slug)
+
+def create_comment_view(request, slug):
+    context = {}
+    user = request.user
+    if not user.is_authenticated:
+        return redirect('login')
+
+    form = CreateCommentForm(request.POST or None)
+    if request.POST:
+        if form.is_valid():
+            obj = form.save(commit=False)
+            name = request.user.username
+            obj.name = name
+            tweet = get_object_or_404(Tweet, slug=slug)
+            obj.tweet = tweet
+            obj.save()
+            form = CreateCommentForm()
+            return redirect('tweet_detail', slug=slug)
+
+    context['form'] = form
+    return render(request, 'feed/add_comment.html', context)

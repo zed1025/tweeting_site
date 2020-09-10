@@ -1,5 +1,5 @@
 from django import forms
-from feed.models import Tweet
+from feed.models import Tweet, Comment
 
 
 class CreateTweetForm(forms.ModelForm):
@@ -23,3 +23,17 @@ class EditTweetForm(forms.ModelForm):
         if commit:
             tweet.save()
         return tweet
+
+
+class CreateCommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['body']
+
+    def save(self, commit=True):
+        comment = self.instance
+        comment.body = self.cleaned_data['body']
+
+        if commit:
+            comment.save()
+        return comment

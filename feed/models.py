@@ -29,3 +29,13 @@ def pre_save_tweet_receiver(sender, instance, *args, **kwargs):
 
 
 pre_save.connect(pre_save_tweet_receiver, sender=Tweet)
+
+
+class Comment(models.Model):
+    tweet = models.ForeignKey(Tweet, related_name='comments', on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    body = models.TextField()
+    date_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return '%s - %s' % (self.tweet.body[:10], self.name)

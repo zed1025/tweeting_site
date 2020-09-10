@@ -7,7 +7,7 @@
         <div class="col-8">
             <div class="container">
                 <div class="row">
-                    <dic class="card m-auto" style="width:100%">
+                    <div class="card m-auto" style="width:100%">
                         <div class="card-body my-2">
                             <h2 class="card-title">
                                 {{tweet.body}}
@@ -38,8 +38,35 @@
                                 <a href="{% url 'tweet_edit' tweet.slug %}" class="btn btn-primary float-right">Edit</a>
                             {% endif %}
                         </div>
-                    </dic>
+                    </div>
                 </div>
+
+
+
+
+                <h2 class="mt-5">{{ tweet.comments.all.count }} Comments</h2>
+                <a href="{% url 'add_comment' tweet.slug %}">Add Comment</a>
+                <hr style="width: 100%;">
+                <div class="row mt-3" >
+                    <div class="col-12">
+                        {% if not tweet.comments.all %}
+                            No comments yet! Click <a href="{% url 'add_comment' tweet.slug %}">&nbsp;here&nbsp;</a> to add a comment.
+                        {% else %}
+                            {% for comment in tweet.comments.all %}
+                                <div>
+                                <b>{{ comment.name }} - {{ comment.date_created }}</b> <br/>
+                                {{ comment.body }}
+                                <br><br>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                </div>
+
+
+
+
             </div>
         </div>
         <div class="col-4">

@@ -8,6 +8,7 @@ from feed.views import (
     tweet_update_view,
     like_view,
     # dislike_view,
+    create_comment_view,
 )
 
 urlpatterns = [
@@ -18,4 +19,6 @@ urlpatterns = [
     path('<slug>/edit/', tweet_update_view, name='tweet_edit'),
     path('<slug>/like_tweet/', like_view, name='like_tweet'),
     # path('<slug>/dislike_tweet/', dislike_view, name='dislike_tweet'),
+    path('<slug>/comment/', create_comment_view, name='add_comment'),
+
 ]
