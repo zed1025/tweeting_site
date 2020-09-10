@@ -1,15 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-    <div class="custom-centered mt-5">
-        <form action="" method="POST">{% csrf_token %}
-            <div class="form-group">
-                <textarea class="form-control" rows="4" name="body" placeholder="What's happening?"></textarea>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-8">
+            <div class="custom-centered">
+                <form action="" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <textarea class="form-control" rows="4" name="body" placeholder="What's happening?"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary float-right">Tweet</button>
+                </form>
             </div>
-            <button type="submit" class="btn btn-primary float-right">Tweet</button>
-        </form>
+        </div>
+        <div class="col-4">
+            {% include 'feed/sidebar.html' %}
+        </div>
     </div>
+
 </div>
 
 {% endblock %}

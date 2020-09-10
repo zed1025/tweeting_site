@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-8">
+            <div class="container">
+                <div class="row">
+                    <dic class="card m-auto" style="width:100%">
+                        <div class="card-body my-2">
+                            <h2 class="card-title">
+                                {{tweet.body}}
+                            </h2>
+                            <p class="card-text">{{tweet.author.username}}, {{tweet.date_published}}</p>
+                            {% if tweet.author == request.user %}
+                                <a href="{% url 'tweet_edit' tweet.slug %}" class="btn btn-primary float-right">Edit</a>
+                            {% endif %}
+                        </div>
+                    </dic>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            {% include 'feed/sidebar.html' %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

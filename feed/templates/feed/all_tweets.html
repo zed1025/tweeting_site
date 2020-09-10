@@ -4,16 +4,25 @@
 {% block content %}
 <div class="custom-centered mt-5">
 
-    {% if tweets.count == 0 %}
-    <p>You do not have any tweets yet. Click <a href="{% url 'create' %}">here</a> to create your first tweet.</p>
-    {% endif %}
+</div>
 
-    {% for item in tweets %}
-        <h3>{{item.body}}</h3>
-        <p>{{item.date_published}}</p>
-        <hr>
-    {% endfor %}
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            {% if tweets.count == 0 %}
+                <p>You do not have any tweets yet. Click <a href="{% url 'create' %}">here</a> to create your first tweet.</p>
+            {% endif %}
 
+            {% for item in tweets %}
+                <a href="{% url 'tweet_detail' item.slug %}"><h3>{{item.body}}</h3></a>
+                <p>{{item.date_published}}</p>
+                <hr>
+            {% endfor %}
+        </div>
+        <div class="col-4">
+            {% include 'feed/sidebar.html' %}
+        </div>
+    </div>
 </div>
 
 {% endblock %}

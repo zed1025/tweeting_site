@@ -1,0 +1,16 @@
+
+
+
+<a href="{% url 'feed' %}" class="btn btn-primary btn-block" type="button">Home</a>
+<a href="{% url 'all_tweets' %}" class="btn btn-primary btn-block mt-3" type="button">All Tweets</a>
+<a href="{% url 'create' %}" class="btn btn-primary btn-block mt-3" type="button">Tweet</a>
+<div class="mt-3">
+    <div class="card" style="width: 100%;">
+        <div class="card-body">
+            <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@{{user.username}}</h6>
+            <a href="{% url 'account_logout' %}" class="card-link">Log-Out</a>
+            <a href="{% url 'modify_account' %}" class="card-link">Settings</a>
+        </div>
+    </div>
+</div>

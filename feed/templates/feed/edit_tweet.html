@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-8">
+            <form action="" method="post">{% csrf_token %}
+                <div class="form-group">
+                    <textarea class="form-control" rows="4" name="body">
+                        {{ form.initial.body }}
+                    </textarea>
+                </div>
+                <button type="submit" class="btn btn-primary float-right">Update</button>
+            </form>
+            {% if success_message %}
+                <p style="color: green;">{{ success_message }}</p>
+            {% endif %}
+        </div>
+        <div class="col-4">
+            {% include 'feed/sidebar.html' %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

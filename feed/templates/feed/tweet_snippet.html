@@ -1,0 +1,20 @@
+
+
+<div class="container">
+    <div class="row">
+        <div class="card text-white bg-dark mb-3" style="width: 100%;">
+            <div class="card-header">{{tweet.author.first_name}} {{tweet.author.last_name}}&nbsp;&nbsp;<span style="color: gray;">@{{tweet.author.username}}</span> - {{tweet.date_published}}
+                {% if tweet.author == request.user %}
+                    <a href="{% url 'tweet_edit' tweet.slug %}"><button class="btn btn-primary float-right">Edit</button></a>
+                {% endif %}
+            </div>
+          <div class="card-body">
+            <p class="card-text">{{tweet.body}}</p>
+          </div>
+          <div class="card-footer text-white bg-dark">
+              <button class="btn btn-primary">Like</button>
+              &nbsp;&nbsp;Likes - {{ tweet.likes }}
+          </div>
+        </div>
+    </div>
+</div>

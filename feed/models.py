@@ -16,6 +16,10 @@ class Tweet(models.Model):
     def __str__(self):
         return self.body[:50]
 
+    def clean(self):
+        if self.body:
+            self.body = self.body.strip()
+
 
 # creates a slug for the tweet
 def pre_save_tweet_receiver(sender, instance, *args, **kwargs):
