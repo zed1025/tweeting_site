@@ -1,9 +1,10 @@
 from django.db.models import Q
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
 from feed.forms import CreateTweetForm, EditTweetForm
 from feed.models import Tweet
 from django.contrib.auth import get_user_model
 from operator import attrgetter
+from django.urls import reverse
 
 
 User = get_user_model()
@@ -57,7 +58,12 @@ def tweet_detail_view(request, slug):
     context = {}
 
     tweet = get_object_or_404(Tweet, slug=slug)
+
+    liked = False
+    if tweet.likes.filter(id=request.user.id).exists():
+        liked = True
     context['tweet'] = tweet
+    context['liked'] = liked
     return render(request, 'feed/tweet_detail.html', context)
 
 
@@ -103,3 +109,21 @@ def get_tweet_queryset(query=None):
         for post in posts:
             queryset.append(post)
     return list(set(queryset))
+
+
+def like_view(request, slug):
+    tweet = get_object_or_404(Tweet, id=request.POST.get('post_id'))
+    # liked = False
+    if tweet.likes.filter(id=request.user.id).exists():
+        tweet.likes.remove(request.user)
+        # liked = False
+    else:
+        tweet.likes.add(request.user)
+        # liked = True
+    return redirect('tweet_detail', slug=slug)
+
+
+# def dislike_view(request, slug):
+#     tweet = get_object_or_404(Tweet, id=request.POST.get('post_id'))
+#     tweet.likes.remove(request.user)
+#     return redirect('tweet_detail', slug=slug)

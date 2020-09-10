@@ -12,7 +12,28 @@
                             <h2 class="card-title">
                                 {{tweet.body}}
                             </h2>
-                            <p class="card-text">{{tweet.author.username}}, {{tweet.date_published}}</p>
+                            <p class="card-text">{{tweet.author.username}}, {{tweet.date_published}}
+                                {% if tweet.date_published|date:"YmdHis" < tweet.date_updated|date:"YmdHis" %}
+                                <b>(edited)</b>
+                                {% endif %}
+                            </p>
+
+
+
+
+                            <p>Likes - {{ tweet.likes.count }}</p>
+                            {% if user.is_authenticated %}
+                            <form action="{% url 'like_tweet' tweet.slug %}" method="post">{% csrf_token %}
+                                {% if not liked %}
+                                    <button type="submit" name="post_id" value="{{tweet.id}}" class="btn btn-success float-left">Like</button>
+                                {% else %}
+                                    <button type="submit" name="post_id" value="{{tweet.id}}" class="btn btn-danger float-left">Dislike</button>
+                                {% endif %}
+                            </form>
+                            {% endif %}
+
+
+
                             {% if tweet.author == request.user %}
                                 <a href="{% url 'tweet_edit' tweet.slug %}" class="btn btn-primary float-right">Edit</a>
                             {% endif %}

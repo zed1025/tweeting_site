@@ -11,7 +11,7 @@ class Tweet(models.Model):
     date_published = models.DateTimeField(auto_now_add=True, verbose_name='date published')
     date_updated = models.DateTimeField(auto_now=True, verbose_name='date updated')
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    likes = models.PositiveIntegerField(default=0)
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='tweets')
     slug = models.SlugField(blank=True, unique=True)
 
     def __str__(self):
