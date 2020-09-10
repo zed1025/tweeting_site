@@ -1,15 +1,12 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="container mt-5">
     <div class="row">
         <div class="col-8">
             <form action="" method="post">{% csrf_token %}
-                <div class="form-group">
-                    <textarea class="form-control" rows="4" name="body">
-                        {{ form.initial.body }}
-                    </textarea>
-                </div>
+                {{form|crispy}}
                 <button type="submit" class="btn btn-primary float-right">Update</button>
             </form>
             {% if success_message %}

@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from django.conf import settings
 from django.db.models.signals import pre_save
+from ckeditor.fields import RichTextField
 import uuid
 
 
