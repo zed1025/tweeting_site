@@ -5,15 +5,22 @@
 <div class="container mt-5">
 <div class="row">
     <div class="col-8">
+        {% if tweets %}
         {% for item in tweets %}
             <div>
                 {% include 'feed/tweet_snippet.html' with tweet=item %}
             </div>
         {% endfor %}
+        {% else %}
+            <div>
+                {% include 'feed/tweet_snippet.html' with query=query %}
+            </div>
+        {% endif %}
     </div>
     <div class="col-4">
         {% include 'feed/sidebar.html' %}
     </div>
 </div>
 </div>
+
 {% endblock %}

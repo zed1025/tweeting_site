@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from feed.forms import CreateTweetForm, EditTweetForm
 from feed.models import Tweet
@@ -10,7 +11,13 @@ User = get_user_model()
 
 def feed_view(request):
     context = {}
-    tweets = sorted(Tweet.objects.all(), key=attrgetter('date_updated'), reverse=True)
+
+    query = ""
+    if request.GET:
+        query = request.GET['q']
+        context['query'] = str(query)
+
+    tweets = sorted(get_tweet_queryset(query), key=attrgetter('date_updated'), reverse=True)
     context['tweets'] = tweets
     return render(request, 'feed/feed.html', context)
 
@@ -80,3 +87,19 @@ def tweet_update_view(request, slug):
     context['form'] = form
     return render(request, 'feed/edit_tweet.html', context)
 
+
+def get_tweet_queryset(query=None):
+    queryset = []
+    print(type(query))
+    queries = query.split(" ")
+    for q in queries:
+        posts = Tweet.objects.filter(
+            Q(body__icontains=q) |
+            Q(author__username__icontains=q) |
+            Q(author__first_name__icontains=q) |
+            Q(author__last_name__icontains=q)
+        ).distinct()
+
+        for post in posts:
+            queryset.append(post)
+    return list(set(queryset))
