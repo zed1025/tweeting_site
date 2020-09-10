@@ -4,7 +4,7 @@
 {% block content %}
 <div class="container mt-5">
 <div class="row">
-    <div class="col-8">
+    <div class="col-lg-8 col-md-6 col-sm-12 order-lg-first order-md-first order-sm-last">
         {% if tweets %}
         {% for item in tweets %}
             <div>
@@ -17,9 +17,8 @@
             </div>
         {% endif %}
     </div>
-    <div class="col-4">
-        {% include 'feed/sidebar.html' %}
-    </div>
+    
+    {% include 'feed/sidebar.html' %}
 </div>
 </div>
 

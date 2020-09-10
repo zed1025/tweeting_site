@@ -8,7 +8,7 @@
 {% block content %}
 <div class="container mt-5">
     <div class="row">
-        <div class="col-8">
+        <div class="col-lg-8 col-md-6 col-sm-12 order-lg-first order-md-first order-sm-last">
             <div class="custom-centered">
                 <h1>{% trans "E-mail Addresses" %}</h1>
                 {% if user.emailaddress_set.all %}
@@ -58,9 +58,7 @@
                         <button name="action_add" type="submit" class="btn btn-primary btn-lg btn-block">{% trans "Add E-mail" %}</button>
                     </form></div>
         </div>
-        <div class="col-4">
-            {% include 'feed/sidebar.html' %}
-        </div>
+        {% include 'feed/sidebar.html' %}
     </div>
 </div>
 

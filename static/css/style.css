@@ -1,6 +1,6 @@
 .custom-centered{
  margin:0 auto;
- width:600px;
+ /* width:600px; */
 }
 
 :root {
@@ -12,6 +12,28 @@
     padding: 0;
     margin: 0;
     font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+    background: #f9f9f9;
+}
+
+/* Navbar */
+.bg-light {
+    background: #fff !important;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+#brand {
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-left: 0.5em;
+}
+
+#username {
+    text-transform: capitalize;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 .wrapper {
@@ -169,4 +191,48 @@ hr {
     .slider, .slider-content {
         height: auto;
     }
+}
+
+/* Cards */
+.card-header,
+.card-body,
+.card-footer {
+    background: #fff !important;
+}
+
+.author_name {
+    font-weight: 700;
+    color: #000;
+}
+
+.author_username,
+.date_published {
+    font-weight: 400;
+    color: #898989;
+}
+
+.tweet_body,
+.card-footer {
+    color: #000 !important;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.tweet_body:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+.user_profile {
+    width: 20px !important;
+    height: 20px !important;
+    margin-top: -5px !important;
+}
+
+.tweet_float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--primary-color);
+    border-radius: 50%;
 }
