@@ -1,3 +1,5 @@
 *.pyc
 .idea/
 .vscode/
+db.sqlite3
+secrets.py
