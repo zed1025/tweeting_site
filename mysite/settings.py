@@ -135,7 +135,13 @@ LOGOUT_REDIRECT_URL = 'home'
 LOGIN_URL = 'account_login'
 AUTH_USER_MODEL = 'user.CustomUser'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'amit251098@gmail.com'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = secrets.SENDGRID_EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = secrets.SENDGRID_EMAIL_HOST_PASSWORD
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 # allauth settings
 AUTHENTICATION_BACKENDS = [
