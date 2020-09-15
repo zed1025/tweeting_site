@@ -4,12 +4,12 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-lg-8 col-md-6 col-sm-12 order-lg-first order-md-first order-sm-last">
-            <div class="custom-centered">
+            <div class="container">
                 <form action="" method="POST">{% csrf_token %}
                     <div class="form-group">
                         <textarea class="form-control" rows="4" name="body" placeholder="What's happening?"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary float-right">Tweet</button>
+                    <button type="submit" class="btn btn-primary float-right mb-4">Tweet</button>
                 </form>
             </div>
         </div>

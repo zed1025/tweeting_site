@@ -1,4 +1,4 @@
-.custom-centered{
+.container{
  margin:0 auto;
  /* width:600px; */
 }
@@ -235,4 +235,8 @@ hr {
     right: 30px;
     background: var(--primary-color);
     border-radius: 50%;
+}
+
+#tweet {
+    border-radius: 50px !important;
 }
